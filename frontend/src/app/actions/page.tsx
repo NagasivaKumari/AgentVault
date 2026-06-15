@@ -110,7 +110,7 @@ export default function ActionsPage() {
                   </div>
                   <div className="mt-6 pt-6 border-t border-white/[0.05]">
                     <div className="text-[10px] text-primary font-bold uppercase tracking-widest mb-2">AI Confidence</div>
-                    <div className="text-2xl font-bold text-primary glow-text-primary">{r ? Math.round(r.conviction) : 0}%</div>
+                    <div className="text-2xl font-bold text-primary glow-text-primary">{r ? Math.round(r.confidence * 100) : 0}%</div>
                   </div>
                 </CardContent>
               </Card>
@@ -155,7 +155,7 @@ export default function ActionsPage() {
                     </div>
                     <p className="text-sm text-foreground/90 leading-relaxed">&ldquo;{r.reasoning}&rdquo;</p>
                     <div className="flex items-center gap-4 mt-4">
-                      <Badge className="text-[10px] font-bold px-3 py-1 bg-primary/15 text-primary border-primary/30">Conviction: {Math.round(r.conviction)}%</Badge>
+                      <Badge className="text-[10px] font-bold px-3 py-1 bg-primary/15 text-primary border-primary/30">Conviction: {Math.round(r.confidence * 100)}%</Badge>
                       <Badge className="text-[10px] font-bold px-3 py-1 bg-[#10B981]/15 text-[#10B981] border-[#10B981]/30">Confidence: {(r.confidence * 100).toFixed(0)}%</Badge>
                     </div>
                   </div>

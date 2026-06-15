@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import Sidebar from '@/components/Sidebar';
 import TopBar from '@/components/TopBar';
 import { useAnalysis } from '@/context/AnalysisContext';
-import { getConfig } from '@/lib/contracts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -12,7 +11,7 @@ import { BarChart3, Clock, TrendingUp, TrendingDown, ArrowUpRight, Activity, Bra
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 
 export default function BacktestPage() {
-  const cfg = getConfig();
+  const api = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
   const a = useAnalysis();
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -20,7 +19,8 @@ export default function BacktestPage() {
   const runBacktest = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${cfg.backend_api_url}/backtest`);
+      const res = await fetch(`${api}/backtest`);
+
       const json = await res.json();
       setData(json);
     } catch (e) {

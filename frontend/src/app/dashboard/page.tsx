@@ -12,7 +12,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { motion } from 'framer-motion';
 import { TrendingUp, TrendingDown, Minus, Brain, Activity, ArrowUpRight, Wallet, ExternalLink, RefreshCw, Shield, Zap, BarChart3, Circle, Play } from 'lucide-react';
 import { RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { useState, useEffect } from 'react';
 
 const sigsList = [
   { l: 'Whale Activity', v: 'whale_score', c: '#7C3AED' },
@@ -32,7 +31,7 @@ function ConvictionGauge({ value }: { value: number }) {
         </RadialBarChart>
       </ResponsiveContainer>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-3xl font-bold text-foreground glow-text-primary tracking-tighter">{Math.round(value)}</span>
+        <span className="text-3xl font-bold text-foreground glow-text-primary tracking-tighter">{Math.round(value || 0)}</span>
         <span className="text-[9px] text-muted-foreground uppercase tracking-widest font-semibold opacity-70">conviction</span>
       </div>
     </div>
@@ -100,7 +99,7 @@ export default function DashboardPage() {
                       <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" /> AI Status: Active
                     </Badge>
                     <Badge variant="outline" className="text-[10px] border-primary/30 bg-primary/5 text-primary font-bold">
-                      Risk Profile: {a.riskProfile.toUpperCase()}
+                      Risk Profile: {a.riskProfile?.toUpperCase() || 'LOADING...'}
                     </Badge>
                     <Badge variant="outline" className="text-[10px] border-[#3B82F6]/30 bg-[#3B82F6]/5 text-[#3B82F6] font-bold">
                       Mantle: Connected
@@ -119,7 +118,7 @@ export default function DashboardPage() {
             {[
               { label: 'Portfolio Value', value: portfolioValueDisplay, change: '+2.4%', color: '#10B981', icon: Wallet },
               { label: 'Total Return', value: `+${a.totalReturn}%`, change: 'Since inception', color: '#10B981', icon: TrendingUp },
-              { label: 'Active Strategies', value: `${a.activeStrategies.length}`, change: a.activeStrategies.join(', '), color: '#7C3AED', icon: Zap },
+              { label: 'Active Strategies', value: `${a.activeStrategies?.length || 0}`, change: a.activeStrategies?.join(', ') || 'Loading...', color: '#7C3AED', icon: Zap },
               { label: 'Agent Status', value: a.agentStatus === 'active' ? 'Operational' : 'Idle', change: 'All systems nominal', color: '#10B981', icon: Shield },
             ].map((stat, i) => (
               <motion.div key={stat.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
@@ -297,7 +296,7 @@ export default function DashboardPage() {
                   <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-[0.2em] opacity-60">Verification Trail</div>
                   <Badge variant="outline" className="text-[10px] border-white/10 font-mono text-muted-foreground">ERC-8004 COMPLIANT</Badge>
                 </div>
-                {a.txHashes.length > 0 ? (
+                {a.txHashes && a.txHashes.length > 0 ? (
                   <div className="space-y-2">
                     {a.txHashes.slice(0, 5).map((tx, i) => (
                       <div key={i} className="flex items-center justify-between py-4 px-5 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/[0.02] transition-colors group">

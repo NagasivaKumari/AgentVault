@@ -1,0 +1,29 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "AgentVault smart contracts - Vault + StrategyManager for Mantle",
+  "main": "index.js",
+  "scripts": {
+    "compile": "dotenv -e ../backend/.env -- hardhat compile",
+    "test": "hardhat test",
+    "deploy:mocks": "dotenv -e ../backend/.env -- hardhat run scripts/deployMocks.ts --network mantle_sepolia",
+    "deploy:sepolia": "dotenv -e ../backend/.env -- hardhat run scripts/deploy.ts --network mantle_sepolia",
+    "deploy:testnet": "dotenv -e ../backend/.env -- hardhat run scripts/deploy.ts --network mantle_sepolia",
+    "deploy:mainnet": "dotenv -e ../backend/.env -- hardhat run scripts/deploy.ts --network mantle",
+    "verify": "hardhat verify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.4.4",
+    "hardhat": "^2.22.0",
+    "hardhat-deploy": "^0.12.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.0"
+  }
+}

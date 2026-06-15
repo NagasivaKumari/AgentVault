@@ -1,0 +1,53 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        background: '#0B0F19',
+        foreground: '#f1f5f9',
+        card: '#111827',
+        'card-foreground': '#f1f5f9',
+        popover: '#111827',
+        'popover-foreground': '#f1f5f9',
+        primary: '#7C3AED',
+        'primary-foreground': '#ffffff',
+        secondary: 'rgba(255,255,255,0.06)',
+        'secondary-foreground': '#f1f5f9',
+        muted: 'rgba(255,255,255,0.04)',
+        'muted-foreground': '#94a3b8',
+        accent: '#7C3AED',
+        'accent-foreground': '#ffffff',
+        destructive: '#ef4444',
+        border: 'rgba(255,255,255,0.08)',
+        input: 'rgba(255,255,255,0.08)',
+        ring: '#7C3AED',
+        success: '#10B981',
+        warning: '#F59E0B',
+        danger: '#EF4444',
+        secondaryblue: '#3B82F6',
+        sidebar: '#080B13',
+        'sidebar-foreground': '#f1f5f9',
+        'sidebar-primary': '#7C3AED',
+        'sidebar-primary-foreground': '#ffffff',
+        'sidebar-accent': '#1e293b',
+        'sidebar-accent-foreground': '#f1f5f9',
+        'sidebar-border': 'rgba(255,255,255,0.06)',
+        'sidebar-ring': '#7C3AED',
+      },
+      borderRadius: {
+        lg: '0.75rem',
+        md: 'calc(0.75rem * 0.8)',
+        sm: 'calc(0.75rem * 0.6)',
+      },
+    },
+  },
+  plugins: [],
+}

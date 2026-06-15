@@ -24,7 +24,11 @@ export default function ActionsPage() {
   const [showComparison, setShowComparison] = useState(false);
 
   const currentAlloc = { eth: 45, usdc: 30, rwa: 25 };
-  const targetAlloc = r ? { eth: r.meth_allocation, usdc: r.usdy_allocation, rwa: 100 - r.meth_allocation - r.usdy_allocation } : { eth: 50, usdc: 25, rwa: 25 };
+  const targetAlloc = r ? { 
+    eth: r.allocation['eth'] || 0, 
+    usdc: r.allocation['usdc'] || 0, 
+    rwa: r.allocation['rwa'] || 0 
+  } : { eth: 50, usdc: 25, rwa: 25 };
 
   return (
     <main className="min-h-screen flex bg-background">

@@ -70,7 +70,7 @@ export default function ActionsPage() {
                   </div>
                   <div className="mt-6 pt-6 border-t border-white/[0.05]">
                     <div className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest mb-2">Portfolio Value</div>
-                    <div className="text-2xl font-bold text-foreground">${a.portfolioValue?.toLocaleString() || '0'}</div>
+                    <div className="text-2xl font-bold text-foreground">${a.portfolio?.portfolio_value?.toLocaleString() || '0'}</div>
                   </div>
                 </CardContent>
               </Card>

@@ -73,7 +73,7 @@ export default function DecisionEnginePage() {
                       </RadialBarChart>
                     </ResponsiveContainer>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="text-2xl font-bold text-foreground tracking-tighter">{r ? Math.round(r.conviction) : 0}</span>
+                      <span className="text-2xl font-bold text-foreground tracking-tighter">{r ? Math.round(r.conviction || 0) : 0}</span>
                       <span className="text-[8px] text-muted-foreground uppercase tracking-widest font-semibold opacity-70">conviction</span>
                     </div>
                   </div>
@@ -192,7 +192,7 @@ export default function DecisionEnginePage() {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {r.signals.map((sig, i) => (
+                    {r.signals?.map((sig, i) => (
                       <Badge key={i} variant="outline" className="text-[10px] border-primary/20 bg-primary/5 text-primary font-medium">
                         {sig}
                       </Badge>
